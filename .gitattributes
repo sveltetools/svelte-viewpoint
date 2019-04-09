@@ -1,1 +1,1 @@
-*.svelte text diff=html
+*.svelte github-language=html whitespace=tab-in-indent,tabwidth=4
