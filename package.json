@@ -1,0 +1,36 @@
+{
+    "name": "svelte-viewpoint",
+    "version": "1.0.0",
+    "description": "Loadable component for Svelte 3",
+    "svelte": "src/index.js",
+    "main": "index.js",
+    "module": "index.mjs",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "rollup -c",
+        "prepublishOnly": "npm run build"
+    },
+    "files": [
+        "src",
+        "index.mjs",
+        "index.js"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PaulMaly/svelte-viewpoint"
+    },
+    "keywords": [
+        "svelte"
+    ],
+    "author": "PaulMaly",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/PaulMaly/svelte-viewpoint/issues"
+    },
+    "homepage": "https://github.com/PaulMaly/svelte-viewpoint#readme",
+    "devDependencies": {
+        "rollup": "latest",
+        "rollup-plugin-svelte": "latest",
+        "svelte": "beta"
+    }
+}
