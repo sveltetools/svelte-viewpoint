@@ -1,4 +1,4 @@
-{#await 
+{#await
 	Promise.resolve()
 		.then(wait)
 		.then(component)
@@ -28,19 +28,19 @@
 	let component = () => null,
 		loading = () => null,
 		waiting = () => null,
-		error = () => null, 
+		error = () => null,
 		preloading = false,
 		delay = 200,
 		timeout,
 		props = null,
-		showWaiting = false, 
+		showWaiting = false,
 		showLoading = false,
 		timeoutTimer,
 		delayTimer;
 
 	$: {
 		let	{
-			component, loading, waiting, 
+			component, loading, waiting,
 			error, delay, timeout, preloading, ...p
 		} = $$props;
 

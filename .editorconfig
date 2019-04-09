@@ -1,0 +1,19 @@
+root = true
+
+[*]
+charset = utf-8
+indent_style = tab
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.svelte]
+tab_width = 4
+insert_final_newline = false
+
+[*.{html,css}]
+tab_width = 2
+insert_final_newline = false
+
+[*.{js,ts}]
+indent_size = 4
+tab_width = 4
