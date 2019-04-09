@@ -15,7 +15,6 @@
 	{/if}
 {:then comp}
 	{#if comp}
-	{JSON.stringify(props)}
     <svelte:component this={comp} {...props} />
     {/if}
 {:catch err}
