@@ -1,6 +1,6 @@
 {
     "name": "svelte-viewpoint",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Loadable component for Svelte 3",
     "svelte": "src/index.js",
     "main": "index.js",
@@ -22,7 +22,7 @@
     "keywords": [
         "svelte"
     ],
-    "author": "PaulMaly",
+    "author": "PaulMaly  <paul.malys@gmail.com>",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/PaulMaly/svelte-viewpoint/issues"
@@ -31,6 +31,6 @@
     "devDependencies": {
         "rollup": "latest",
         "rollup-plugin-svelte": "latest",
-        "svelte": "beta"
+        "svelte": "latest"
     }
 }
