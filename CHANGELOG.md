@@ -1,5 +1,8 @@
 # svelte-viewpoint changelog
 
+## 1.2.2
+* Update README.
+
 ## 1.2.0
 * Re-write.
 * Update README.

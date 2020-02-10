@@ -86,7 +86,7 @@ Define `preload` in `UserProfile.svelte`:
 
 ```html
 <script context="module">
-	export async function({ user }) {
+	export async function preload({ user }) {
 		const res = await fetch(`/user/${user.id}/messages`);
 		const messages = res.json();
 		return { messages };
