@@ -1,15 +1,11 @@
 root = true
 
 [*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.{js,css,html,svelte}]
 charset = utf-8
 indent_style = tab
-
-[*.svelte]
-tab_width = 4
-
-[*.{html,css}]
-tab_width = 2
-
-[*.{js,ts}]
 indent_size = 4
-tab_width = 4
+trim_trailing_whitespace = true

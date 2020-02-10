@@ -1,14 +1,14 @@
 {
     "name": "svelte-viewpoint",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Loadable component for Svelte 3",
     "svelte": "src/index.js",
     "main": "index.js",
     "module": "index.mjs",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
         "build": "rollup -c",
-        "prepublishOnly": "npm run build"
+        "prepublishOnly": "npm run lint & npm run build",
+        "lint": "eslint src/*.svelte"
     },
     "files": [
         "src",
@@ -29,7 +29,10 @@
     },
     "homepage": "https://github.com/PaulMaly/svelte-viewpoint#readme",
     "devDependencies": {
+        "eslint": "latest",
+        "eslint-plugin-svelte3": "latest",
         "rollup": "latest",
+        "rollup-plugin-node-resolve": "latest",
         "rollup-plugin-svelte": "latest",
         "svelte": "latest"
     }
