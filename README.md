@@ -9,7 +9,7 @@
 - `waiting` placeholder component after timeout.
 - `error` component.
 - Proxes any additional props to target component.
-- Preloads target component data using Sapper-like `prealod` function in context of module.
+- Preloads target component data using Sapper-like `preload` function in context of module.
 
 ## Install
 
@@ -23,7 +23,7 @@ yarn add svelte-viewpoint
 
 CDN: [UNPKG](https://unpkg.com/svelte-viewpoint/) | [jsDelivr](https://cdn.jsdelivr.net/npm/svelte-viewpoint/) (available as `window.Viewpoint`)
 
-If you are **not** using using es6, instead of importing add 
+If you are **not** using ES6, instead of importing add 
 
 ```html
 <script src="/path/to/svelte-viewpoint/index.js"></script>
@@ -51,7 +51,7 @@ just before closing body tag.
 		<Spinner />
 	</div>
 	<div slot="waiting">
-		Wait a few second, please...
+		Wait for a few seconds, please...
 	</div>
 	<div slot="error" let:error>
 		<Error {error} />
@@ -101,16 +101,16 @@ Define `preload` in `UserProfile.svelte`:
 
 | Name | Type | Description | Required | Default |
 | --- | --- | --- | --- | --- |
-| `component` | `Function` | Returns target component | No | null |
-| `delay` | `Number` | Delay in ms before the loading component is shown | No | 200 |
-| `timeout` | `Number` | Timeout in ms before the waiting component is shown. If not defined, waiting component won't be shown | No | undefined |
+| `component` | `Function` | Returns target component. | No | null |
+| `delay` | `Number` | Delay in ms before the loading component is shown. | No | 200 |
+| `timeout` | `Number` | Timeout in ms before the waiting component is shown. If not defined, waiting component won't be shown. | No | undefined |
 | `abort` | `Number` | Timeout in ms before target component loading will be aborted. If not defined loading won't be aborted until the error. | No | undefined |
-| `preloading` | `Boolean` | Activates data preloading | No | true |
+| `preloading` | `Boolean` | Activates data preloading. | No | true |
 
 ## Slots
-- `waiting` - elements to be placed on waiting
-- `loading` - elements to be placed on loading
-- `error` - elements to be placed on error
+- `waiting` — elements to be placed on waiting
+- `loading` — elements to be placed on loading
+- `error` — elements to be placed on error
 
 ## License
 
