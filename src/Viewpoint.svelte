@@ -1,5 +1,5 @@
 {#await Promise.resolve().then(wait).then(load).then(preload)}
-  {#if !timeoutTimer}
+  {#if timeout && !timeoutTimer}
     <slot name="waiting" />
   {:else if !delayTimer}
     <slot name="loading" />
@@ -20,8 +20,8 @@
 		timeoutTimer,
 		delayTimer,
 		delay = 200,
-		timeout,
-		abort;
+		timeout = 0,
+		abort = 0;
 
 	$: {
 		const {
@@ -55,9 +55,9 @@
 	};
 
 	function wait() {
-		delayTimer = setTimeout(() => {
+		delay && (delayTimer = setTimeout(() => {
 			delayTimer = clearTimeout(delayTimer);
-		}, delay || 0);
+		}, delay));
 
 		timeout && (timeoutTimer = setTimeout(() => {
 			timeoutTimer = clearTimeout(timeoutTimer);

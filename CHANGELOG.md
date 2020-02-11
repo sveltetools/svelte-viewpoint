@@ -1,5 +1,10 @@
 # svelte-viewpoint changelog
 
+## 1.2.3
+* Set `timeout` & `abort` default values to prevent warnings.
+* Update README.
+* Add bundled code to git.
+
 ## 1.2.2
 * Update README.
 

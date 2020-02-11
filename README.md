@@ -1,4 +1,4 @@
-# Loadable components for Svelte 3
+# Loadable component for Svelte 3
 
 [![NPM version](https://img.shields.io/npm/v/svelte-viewpoint.svg?style=flat)](https://www.npmjs.com/package/svelte-viewpoint) [![NPM downloads](https://img.shields.io/npm/dm/svelte-viewpoint.svg?style=flat)](https://www.npmjs.com/package/svelte-viewpoint)
 
@@ -103,8 +103,8 @@ Define `preload` in `UserProfile.svelte`:
 | --- | --- | --- | --- | --- |
 | `component` | `Function` | Returns target component. | No | null |
 | `delay` | `Number` | Delay in ms before the loading component is shown. | No | 200 |
-| `timeout` | `Number` | Timeout in ms before the waiting component is shown. If not defined, waiting component won't be shown. | No | undefined |
-| `abort` | `Number` | Timeout in ms before target component loading will be aborted. If not defined loading won't be aborted until the error. | No | undefined |
+| `timeout` | `Number` | Timeout in ms before the waiting component is shown. If not defined or 0 waiting component won't be shown. | No | 0 |
+| `abort` | `Number` | Timeout in ms before target component loading will be aborted. If not defined or 0 loading won't be aborted until the error. | No | 0 |
 | `preloading` | `Boolean` | Activates data preloading. | No | true |
 
 ## Slots
