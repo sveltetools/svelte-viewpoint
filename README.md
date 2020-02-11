@@ -51,7 +51,7 @@ just before closing body tag.
 		<Spinner />
 	</div>
 	<div slot="waiting">
-		wait for a few seconds, please...
+		Wait for a few seconds, please...
 	</div>
 	<div slot="error" let:error>
 		<Error {error} />
