@@ -1,5 +1,8 @@
 # svelte-viewpoint changelog
 
+## 1.2.4
+* Additional check to be whether we are dealing with regular function or Svelte component (class).
+
 ## 1.2.3
 * Set `timeout` & `abort` default values to prevent warnings.
 * Update README.

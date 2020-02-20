@@ -1,6 +1,6 @@
 {
     "name": "svelte-viewpoint",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "Loadable component for Svelte 3",
     "svelte": "src/index.js",
     "main": "index.js",
