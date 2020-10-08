@@ -1,83 +1,73 @@
-{#await Promise.resolve()
-  .then(wait)
-  .then(load)
-  .then(preload)}
-  {#if timeout && !timeoutTimer}
-    <slot name="waiting" />
-  {:else if !delayTimer}
-    <slot name="loading" />
-  {/if}
+{#await Promise.resolve().then(wait).then(load).then(preload)}
+	{#if timeout && !timeoutTimer}
+		<slot name="waiting" />
+	{:else if !delayTimer}
+		<slot name="loading" />
+	{/if}
 {:then comp}
-  {#if comp}
-    <svelte:component this={comp} {...props} {...state} />
-  {/if}
+	{#if comp}
+		<svelte:component this={comp} {...$$restProps} {...state} />
+	{/if}
 {:catch error}
-  <slot name="error" {error} />
+	<slot name="error" {error} />
 {/await}
 
 <script>
-  let component = null,
-    preloading = true,
-    props = null,
-    state = null,
-    timeoutTimer,
-    delayTimer,
-    delay = 200,
-    timeout = 0,
-    abort = 0;
+	let component = null,
+		preloading = true,
+		state = null,
+		timeoutTimer,
+		delayTimer,
+		delay = 200,
+		timeout = 0,
+		abort = 0;
 
-  $: {
-    const { preloading, component, timeout, delay, abort, ...other } = $$props;
+	$: load = function () {
+		return new Promise((resolve, reject) => {
+			let abortTimer;
 
-    props = other;
-  }
+			Promise.resolve(
+				typeof component === "function" &&
+					!/^\s*class\s+/.test(component.toString()) // class, not a plain function
+					? component()
+					: component
+			).then((m) => {
+				clearTimeout(abortTimer);
+				resolve(m);
+			});
 
-  $: load = function() {
-    return new Promise((resolve, reject) => {
-      let abortTimer;
+			abort &&
+				(abortTimer = setTimeout(() => {
+					reject(new Error("Aborted by timeout."));
+				}, abort));
+		});
+	};
 
-      Promise.resolve(
-        typeof component === "function" &&
-          !/^\s*class\s+/.test(component.toString()) // class, not a plain function
-          ? component()
-          : component
-      ).then(m => {
-        clearTimeout(abortTimer);
-        resolve(m);
-      });
+	$: preload = function (m) {
+		return (
+			m &&
+			Promise.resolve(
+				preloading && typeof m.preload === "function"
+					? m.preload($$restProps)
+					: undefined
+			).then((data = {}) => {
+				state = data;
+				return m.default || m;
+			})
+		);
+	};
 
-      abort &&
-        (abortTimer = setTimeout(() => {
-          reject(new Error("Aborted by timeout."));
-        }, abort));
-    });
-  };
+	function wait() {
+		delay &&
+			(delayTimer = setTimeout(() => {
+				delayTimer = clearTimeout(delayTimer);
+			}, delay));
 
-  function wait() {
-    delay &&
-      (delayTimer = setTimeout(() => {
-        delayTimer = clearTimeout(delayTimer);
-      }, delay));
+		timeout &&
+			(timeoutTimer = setTimeout(() => {
+				timeoutTimer = clearTimeout(timeoutTimer);
+			}, timeout));
+	}
 
-    timeout &&
-      (timeoutTimer = setTimeout(() => {
-        timeoutTimer = clearTimeout(timeoutTimer);
-      }, timeout));
-  }
-
-  function preload(m) {
-    return (
-      m &&
-      Promise.resolve(
-        preloading && typeof m.preload === "function"
-          ? m.preload(props)
-          : undefined
-      ).then((data = {}) => {
-        state = data;
-        return m.default || m;
-      })
-    );
-  }
-
-  export { preloading, component, timeout, delay, abort };
+	export { preloading, component, timeout, delay, abort };
 </script>

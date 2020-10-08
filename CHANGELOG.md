@@ -1,5 +1,12 @@
 # svelte-viewpoint changelog
 
+## 1.3.0
+* Re-run `preload` if some of the target component props changed.
+* Use $$restProps instead of manual collecting.
+* Code formatting via Prettier.
+* Fix devDeps.
+* Compiled files now also shipped.
+
 ## 1.2.4
 * Additional check to be whether we are dealing with regular function or Svelte component (class).
 
