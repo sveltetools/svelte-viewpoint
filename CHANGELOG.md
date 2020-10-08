@@ -1,5 +1,8 @@
 # svelte-viewpoint changelog
 
+## 1.3.1
+* Exclude superfluous dependencies for re-run `preload`. 
+
 ## 1.3.0
 * Re-run `preload` if some of the target component props changed.
 * Use $$restProps instead of manual collecting.

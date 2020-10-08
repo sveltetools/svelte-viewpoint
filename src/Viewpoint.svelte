@@ -1,4 +1,4 @@
-{#await Promise.resolve().then(wait).then(load).then(preload)}
+{#await ($$restProps, Promise.resolve().then(wait).then(load).then(preload))}
 	{#if timeout && !timeoutTimer}
 		<slot name="waiting" />
 	{:else if !delayTimer}
@@ -43,7 +43,7 @@
 		});
 	};
 
-	$: preload = function (m) {
+	function preload(m) {
 		return (
 			m &&
 			Promise.resolve(
@@ -55,7 +55,7 @@
 				return m.default || m;
 			})
 		);
-	};
+	}
 
 	function wait() {
 		delay &&
