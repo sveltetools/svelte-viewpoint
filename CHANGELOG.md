@@ -1,5 +1,8 @@
 # svelte-viewpoint changelog
 
+# 1.4.3
+* Improve typings.
+
 # 1.4.2
 * Minor fix in `package.json`.
 

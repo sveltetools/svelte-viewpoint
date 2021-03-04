@@ -1,11 +1,15 @@
 import { SvelteComponent, SvelteComponentTyped } from 'svelte';
 
-export interface ViewpointProps {
-    component: SvelteComponent | null;
-    preloading: boolean;
-    timeout: number;
-    delay: number;
-    abort: number;
+type DynamicSvelteComponent = () => Promise<typeof import('*.svelte')>;
+
+export interface Props {
+    component: SvelteComponent | DynamicSvelteComponent | null;
+    preloading?: boolean;
+    timeout?: number;
+    delay?: number;
+    abort?: number;
+    [name: string]: any;
 }
 
-export declare class Viewpoint extends SvelteComponentTyped<ViewpointProps> {}
+declare class Viewpoint extends SvelteComponentTyped<Props> {}
+export default Viewpoint;
